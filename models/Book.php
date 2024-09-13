@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\validators\IsbnValidator;
+
 class Book extends \yii\db\ActiveRecord
 {
     /**
@@ -23,6 +25,7 @@ class Book extends \yii\db\ActiveRecord
             [['price'], 'number'],
             [['stock'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
+            ['isbn', IsbnValidator::class],
         ];
     }
 }
