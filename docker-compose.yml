@@ -1,0 +1,23 @@
+version: '3'
+services:
+  php:
+    image: yiisoftware/yii2-php:8.3-fpm-nginx
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app:delegated
+    ports:
+      - '8000:80'
+
+  mysql:
+    image: mysql:8.4.2
+    command: --sql-mode="NO_ENGINE_SUBSTITUTION"
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_ROOT_USER: ${DATABASE_USER}
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 3306:3306
+    volumes:
+     - ./.database:/var/lib/mysql
