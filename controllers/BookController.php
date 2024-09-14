@@ -4,15 +4,30 @@ namespace app\controllers;
 
 use app\models\Book;
 use app\services\BookService;
-use app\traits\AuthTrait;
 use Yii;
 use yii\rest\ActiveController;
 
 class BookController extends ActiveController
 {
-    use AuthTrait;
-
     public $modelClass = Book::class;
+
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::class,
+        ];
+
+        unset($behaviors['authenticator']);
+
+        $behaviors['authenticator'] = [
+            'class' => \yii\filters\auth\HttpBearerAuth::class,
+            'except' => ['options'],
+        ];
+
+        return $behaviors;
+    }
 
     public function actions()
     {

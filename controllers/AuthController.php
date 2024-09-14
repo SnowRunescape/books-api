@@ -19,6 +19,15 @@ class AuthController extends Controller
         $this->authService = new AuthService();
     }
 
+    public function behaviors()
+    {
+        return [
+            'corsFilter' => [
+                'class' => \yii\filters\Cors::class,
+            ],
+        ];
+    }
+
     public function actionLogin()
     {
         $request = Yii::$app->request;
