@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
@@ -44,7 +46,13 @@ class User extends ActiveRecord implements IdentityInterface
 
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return static::findOne(['access_token' => $token]);
+        try {
+            $jwt = JWT::decode($token, new Key(getenv('JWT_SECRET'), 'HS256'));
+
+            return self::findIdentity($jwt->sub);
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
 
     public function getId()
