@@ -2,17 +2,17 @@
 
 namespace app\controllers;
 
-use app\models\Book;
-use app\services\BookService;
+use app\models\Customer;
+use app\services\CustomerService;
 use app\traits\AuthTrait;
 use Yii;
 use yii\rest\ActiveController;
 
-class BookController extends ActiveController
+class CustomerController extends ActiveController
 {
     use AuthTrait;
 
-    public $modelClass = Book::class;
+    public $modelClass = Customer::class;
 
     public function actions()
     {
@@ -25,7 +25,7 @@ class BookController extends ActiveController
 
     public function actionIndex()
     {
-        $books = (new BookService())->getBooks([
+        $books = (new CustomerService())->getCustomers([
             'filters' => Yii::$app->request->queryParams,
             'limit' => (int) Yii::$app->request->get('limit'),
             'offset' => (int) Yii::$app->request->get('offset'),

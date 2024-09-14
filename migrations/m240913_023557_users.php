@@ -17,6 +17,8 @@ class m240913_023557_users extends \yii\db\Migration
             'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
             'updated_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP')->append('ON UPDATE CURRENT_TIMESTAMP'),
         ], $tableOptions);
+
+        $this->createIndex('IDX_LOGIN', 'users', 'login');
     }
 
     public function down()

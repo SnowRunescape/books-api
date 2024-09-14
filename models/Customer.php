@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-class Client extends \yii\db\ActiveRecord
+class Customer extends \yii\db\ActiveRecord
 {
     /**
      * Define o nome da tabela associada a esta model.
