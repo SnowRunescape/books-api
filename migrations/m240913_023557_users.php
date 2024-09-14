@@ -11,7 +11,7 @@ class m240913_023557_users extends \yii\db\Migration
 
         $this->createTable('users', [
             'id' => $this->primaryKey(),
-            'login' => $this->string()->notNull(),
+            'login' => $this->string()->notNull()->unique(),
             'password' => $this->string()->notNull(),
             'name' => $this->string()->notNull(),
             'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
