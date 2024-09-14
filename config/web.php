@@ -47,6 +47,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'auth'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'book'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'customer'],
             ],
