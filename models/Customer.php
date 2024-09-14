@@ -11,7 +11,7 @@ class Customer extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'clients';
+        return 'customers';
     }
 
     /**
@@ -22,7 +22,7 @@ class Customer extends \yii\db\ActiveRecord
         return [
             [['cpf'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
-            ['isbn', CpfValidator::class],
+            ['cpf', CpfValidator::class],
         ];
     }
 }
