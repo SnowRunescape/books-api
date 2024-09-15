@@ -1,0 +1,262 @@
+{
+    "info": {
+        "_postman_id": "3e1dd5e2-0a61-4a08-aba9-5e1d1efbaf94",
+        "name": "Book-API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "26430631"
+    },
+    "item": [
+        {
+            "name": "/auth/login",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "var jsonData = JSON.parse(responseBody);\r",
+                            "pm.collectionVariables.set('token', jsonData.token);"
+                        ],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "login",
+                            "value": "snowrunescape",
+                            "type": "text"
+                        },
+                        {
+                            "key": "password",
+                            "value": "123456",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "{{base_url}}/auth/login",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "login"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "/books",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/books?limit=2&offset=1",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "books"
+                    ],
+                    "query": [
+                        {
+                            "key": "limit",
+                            "value": "2"
+                        },
+                        {
+                            "key": "order",
+                            "value": "id DESC",
+                            "disabled": true
+                        },
+                        {
+                            "key": "sort",
+                            "value": "title",
+                            "disabled": true
+                        },
+                        {
+                            "key": "title",
+                            "value": "aki",
+                            "disabled": true
+                        },
+                        {
+                            "key": "isbn",
+                            "value": "9788545702870",
+                            "disabled": true
+                        },
+                        {
+                            "key": "offset",
+                            "value": "1"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "/books",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "title",
+                            "value": "Akira vol. 1",
+                            "type": "text"
+                        },
+                        {
+                            "key": "author",
+                            "value": "Katsuhiro Ōtomo",
+                            "type": "text"
+                        },
+                        {
+                            "key": "isbn",
+                            "value": "9788545702870",
+                            "type": "text"
+                        },
+                        {
+                            "key": "price",
+                            "value": "33.99",
+                            "type": "text"
+                        },
+                        {
+                            "key": "stock",
+                            "value": "100",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "{{base_url}}/books",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "books"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "/customers",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/customers",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "customers"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "/upload",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "file",
+                            "type": "file",
+                            "src": "/C:/Users/bruno/OneDrive/Imagens/9QwdRIn.png"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "{{base_url}}/upload",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "upload"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "/user",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/user",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "user"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "token",
+            "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJib29rLWFwaSIsImlhdCI6MTcyNjMxMjYyMSwiZXhwIjoxNzI2MzE2MjIxLCJzdWIiOjF9.FSM6x_eXRov8RHc2xFCCiLm_7yoIDBOJaMy9DgkMZpU"
+        },
+        {
+            "key": "base_url",
+            "value": "https://book-api.snowdev.com.br",
+            "type": "string"
+        }
+    ]
+}
