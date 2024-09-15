@@ -16,7 +16,7 @@ nem pense em trocar a senha 😁
 * crie as tabelas no banco de dados `php yii migrate`.
 * Crie um usuario pelo CLI, utilizando `php yii user/create-user {login} {password} {name}`.
 
-Há um arquivo para realizar os testes com o [Postman Collection](https://github.com/SnowRunescape/books-api/blob/master/Book-API.postman_collection)
+Há um arquivo para realizar os testes com o [Postman Collection](https://github.com/SnowRunescape/books-api/blob/master/Book-API.postman_collection.json).
 
 ## Rotas API
 
