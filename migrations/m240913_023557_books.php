@@ -16,6 +16,7 @@ class m240913_023557_books extends \yii\db\Migration
             'isbn' => $this->string()->notNull(),
             'price' => $this->string(11)->notNull(),
             'stock' => $this->integer()->notNull(),
+            'image' => $this->string()->notNull(),
             'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
             'updated_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP')->append('ON UPDATE CURRENT_TIMESTAMP'),
         ], $tableOptions);
