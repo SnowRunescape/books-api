@@ -18,7 +18,7 @@ $config = [
         ],
         'flysystem' => [
             'class' => 'creocoder\flysystem\LocalFilesystem',
-            'path' => '@webroot/assets/img/uploads',
+            'path' => getenv('FLYSYSTEM_PATH', '@webroot/assets/img/uploads'),
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
