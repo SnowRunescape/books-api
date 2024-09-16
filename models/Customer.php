@@ -20,7 +20,11 @@ class Customer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cpf'], 'required'],
+            [['name', 'cpf', 'cep', 'street', 'number', 'city', 'state', 'complement', 'gender'], 'required'],
+            [['name', 'street', 'complement'], 'string', 'max' => 255],
+            [['number'], 'string', 'max' => 10],
+            [['state'], 'string', 'max' => 2],
+            ['gender', 'in', 'range' => ['M', 'F']],
             [['created_at', 'updated_at'], 'safe'],
             ['cpf', CpfValidator::class],
         ];
