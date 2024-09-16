@@ -29,4 +29,14 @@ class Customer extends \yii\db\ActiveRecord
             ['cpf', CpfValidator::class],
         ];
     }
+
+    public function beforeValidate()
+    {
+        if (parent::beforeValidate()) {
+            $this->cpf = preg_replace('/[.-]/', '', $this->cpf);
+            return true;
+        }
+
+        return false;
+    }
 }
