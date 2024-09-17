@@ -56,7 +56,13 @@
             "name": "/books",
             "request": {
                 "method": "GET",
-                "header": [],
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
                 "url": {
                     "raw": "{{base_url}}/books?limit=2&offset=1",
                     "host": [
@@ -103,7 +109,13 @@
             "name": "/books",
             "request": {
                 "method": "POST",
-                "header": [],
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
                 "body": {
                     "mode": "formdata",
                     "formdata": [
